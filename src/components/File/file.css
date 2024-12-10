@@ -1,0 +1,19 @@
+
+.container {
+    display: flex;
+    flex-direction: column; /* 垂直方向排列 */
+    align-items: center; /* 水平居中 */
+    gap: 20px; /* 设置间距 */
+}
+
+.file-class {
+    width: 305px; /* 容器宽度 */
+    height: 205px; /* 容器高度 */
+    /* box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2); */
+    /* border-radius: 15px;  */
+    background-color: transparent; /* 背景透明 */
+    display: flex; /* 使用 Flexbox */
+    justify-content: center; /* 水平居中 */
+    align-items: center; /* 垂直居中 */
+    overflow: hidden; /* 防止图片溢出 */
+}
