@@ -12,6 +12,13 @@ function List(props) {
         <Row>
             {props.listdata?.map((item, index) => {
                 if (!item.Dir) {
+                    if (item.Filename.endsWith(".jpg") || item.Filename.endsWith(".png")) {
+                        return (
+                            <Col span={4}>
+                                <ImgM  />
+                            </Col>
+                        );
+                    }
                     return (
                         <Col span={4}>
                             <File filename={item.Filename} />
