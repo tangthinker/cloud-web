@@ -2,41 +2,68 @@ import { useState } from 'react'
 import reactLogo from './assets/react.svg'
 import viteLogo from '/vite.svg'
 import './App.css'
-import ImgM from './components/imgm/ImgM'
-import File from './components/File/File'
-import Dir from './components/Dir/Dir'
 import List from './components/List/List'
 import { useEffect } from 'react'
+import { BaseUrl } from './constrant'
+import Back from './components/Back/back'
 
 function App() {
 
   const [data, setData] = useState(null)
+  const [backPath, setBackPath] = useState(["/"])
+  const [path, setPath] = useState("/")
 
-    useEffect(() => {
-      async function fetchData() {
-        const response = await fetch("http://127.0.0.1:9999/api/v1/storage/ls", {
-          method: "POST",
-          headers: {
-            "Content-Type": "application/json"
-          },
-          body: JSON.stringify({
-            "path": "/"
-          })
+  const pushBackPath = (path) => {
+    setBackPath((prevStack) => [...prevStack, path])
+  }
+
+  const popBackPath = () => {
+    setBackPath((prevStack) => prevStack.slice(0, -1))
+  }
+
+  useEffect(() => {
+    async function fetchData() {
+      const response = await fetch(BaseUrl + "/api/v1/storage/ls", {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json"
+        },
+        body: JSON.stringify({
+          "path": path
         })
+      })
 
-        const data = await response.json()
+      const data = await response.json()
 
-        setData(data.data)
-      
-      }
+      setData(data.data)
+    
+    }
 
-      fetchData()
-    },[])
+    fetchData()
+  },[path])
+  
+  function updatePath(newPath) {
+    if (newPath === "..") {
+      popBackPath()
+      setPath(backPath[backPath.length - 1])
+      return
+    }
+    pushBackPath(path)
+    setPath(newPath)
+  }
+
+  function back() {
+    if (backPath.length === 1) {
+      return
+    }
+    updatePath("..")
+  }
 
   return (
     <>
-      <h1>Hello world!</h1>
-      <List listdata={data}/>
+      <Back OnClick={back} />
+      <div style={{ fontSize: '35px'}}>{path}</div>
+      <List listdata={data} onUpdate={updatePath} />
     </>
   )
 }

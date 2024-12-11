@@ -7,8 +7,8 @@
 }
 
 .img-with-shadow {
-    width: 305px; /* 容器宽度 */
-    height: 205px; /* 容器高度 */
+    width: 255px; /* 容器宽度 */
+    height: 155px; /* 容器高度 */
     box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2); /* 阴影 */
     border-radius: 15px; /* 圆角半径 */
     background-color: transparent; /* 背景透明 */
