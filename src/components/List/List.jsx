@@ -13,15 +13,9 @@ function List(props) {
             {props.listdata?.map((item, index) => {
                 if (!item.Dir) {
                     if (item.Filename.endsWith(".jpg") || item.Filename.endsWith(".png")) {
-                        let result = ""
-                        const response = fetch("http://127.0.0.1:9999/api/v1/storage/get?path=" + item.Path)
-                            .then((response) => response.json())
-                            .then((data) => result = data.data)
-                        
-                        console.log("result: " + result);
                         return (
                             <Col span={4}>
-                                <img src={`data:image/png;base64,${result}`} filename={item.Filename}  />
+                                <ImgM src={"http://127.0.0.1:9999/api/v1/storage/download?filepath=" + item.Path} filename={item.Filename}  />
                             </Col>
                         );
                     }
