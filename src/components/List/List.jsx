@@ -16,7 +16,7 @@ function List(props) {
 
     return (
         <div>
-        <Row gutter={[24, 24]}>
+        <Row gutter={[30, 30]}>
             {DirList?.map((item, index) => {
                 return (
                     <Col span={3}>
@@ -28,7 +28,9 @@ function List(props) {
            
         </Row>
 
-        <Row gutter={[24, 24]}>
+        <p></p><p></p>
+
+        <Row gutter={[30, 30]}>
             {FileList?.map((item, index) => {
                 return (
                     <Col span={3}>
@@ -39,6 +41,8 @@ function List(props) {
                 );
             })}
         </Row>
+
+        <p></p><p></p>
 
         <Row gutter={[10, 10]}>
             {ImgageList?.map((item, index) => {

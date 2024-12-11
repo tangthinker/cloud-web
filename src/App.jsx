@@ -62,7 +62,7 @@ function App() {
   return (
     <>
       <Back OnClick={back} />
-      <div style={{ fontSize: '35px'}}>{path}</div>
+      <div style={{ fontSize: '20px'}}>{path}</div>
       <List listdata={data} onUpdate={updatePath} />
     </>
   )

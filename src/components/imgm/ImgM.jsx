@@ -1,12 +1,28 @@
 import React from "react";
 import "./ImgM.css";
-import { Image } from "antd";
+import { Image, Space } from "antd";
+import { DownloadOutlined,
+    RotateLeftOutlined,
+    RotateRightOutlined,
+    SwapOutlined,
+    UndoOutlined,
+    ZoomInOutlined,
+    ZoomOutOutlined, 
+} from "@ant-design/icons";
+
 
 function ImgM(props) {
 
     const [fetchD, setFetchD] = React.useState("");
 
     const [fetchS, setFetchS] = React.useState("");
+
+    const handleDownload = () => {
+        const link = document.createElement("a");
+        link.href = "data:image/jpeg;base64," + fetchS;
+        link.download = props.filename;
+        link.click();
+    }
 
     React.useEffect(() => {
         fetch(props.src)
@@ -31,6 +47,36 @@ function ImgM(props) {
                 src={"data:image/jpeg;base64," + fetchD}
                 preview={{
                     src: "data:image/jpeg;base64," + fetchS,
+                    toolbarRender: (
+                        _,
+                        {
+                          transform: { scale },
+                          actions: {
+                            onFlipY,
+                            onFlipX,
+                            onRotateLeft,
+                            onRotateRight,
+                            onZoomOut,
+                            onZoomIn,
+                            onReset,
+                          },
+                        },
+                    ) => {
+
+                            return [
+                            <Space size={12} className="toolbar-wrapper">
+                                <DownloadOutlined onClick={handleDownload} />
+                                <SwapOutlined rotate={90} onClick={onFlipY} />
+                                <SwapOutlined onClick={onFlipX} />
+                                <RotateLeftOutlined onClick={onRotateLeft} />
+                                <RotateRightOutlined onClick={onRotateRight} />
+                                <ZoomOutOutlined disabled={scale === 1} onClick={onZoomOut} />
+                                <ZoomInOutlined disabled={scale === 50} onClick={onZoomIn} />
+                                <UndoOutlined onClick={onReset} />
+                            </Space>
+                            ]
+                        
+                    },
                 }}
             />
         </div>

@@ -4,6 +4,7 @@ import "./file.css";
 import { Button, Modal, Input, Flex } from "antd";
 import { BaseUrl } from "../../constrant";
 import base64 from "base-64";
+import { FileOutlined } from "@ant-design/icons";
 
 const { TextArea } = Input;
 
@@ -59,11 +60,13 @@ function File(props) {
         <>
             <div class="container">
             <div class="file-class">
-                <img
+                {/* <img
                     style={{ width: "80px", height: "80px" }}
                     src={FileImg}
                     onClick={handleClick}
-                />
+                /> */}
+                <FileOutlined style={{ fontSize: '30px', color: "black" }} onClick={handleClick} />
+
             </div>
             <div class="filename-class">
                 {props.filename}

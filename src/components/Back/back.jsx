@@ -8,7 +8,7 @@ function Back(props) {
         <div class="back-container">
         <div class="back-class">
             <img
-                style={{ width: "40px", height: "40px" }}
+                style={{ width: "20px", height: "40px" }}
                 src={BackImg}
                 onClick={props.OnClick}
             />
