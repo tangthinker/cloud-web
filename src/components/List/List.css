@@ -1,0 +1,10 @@
+
+.list-filename-class {
+    text-align: center;
+    display: flex;
+    flex: 9;
+    width: 200px;
+    white-space: nowrap;       /* 禁止换行 */
+    overflow: hidden;          /* 超出隐藏 */
+    text-overflow: ellipsis;   /* 显示省略号 */
+}

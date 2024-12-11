@@ -51,6 +51,16 @@ function File(props) {
 
     }
 
+    const filenameVendor = () => {
+        if (props.filename.length > 0) {
+            return (
+                <div class="filename-class">
+                    {props.filename}
+                </div>
+            )
+        }
+    }
+
 
     function handleClick() {
         showLoading();
@@ -68,9 +78,9 @@ function File(props) {
                 <FileOutlined style={{ fontSize: '35px', color: "black" }} onClick={handleClick} />
 
             </div>
-            <div class="filename-class">
-                {props.filename}
-            </div>
+            {
+                filenameVendor()
+            }
             </div>
 
             <Modal

@@ -1,9 +1,9 @@
 
 .container {
     display: flex;
+    flex: 1;
     flex-direction: column; /* 垂直方向排列 */
     align-items: center; /* 水平居中 */
-    gap: 20px; /* 设置间距 */
 }
 
 .img-with-shadow {

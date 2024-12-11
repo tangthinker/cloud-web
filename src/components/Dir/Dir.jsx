@@ -8,6 +8,16 @@ function Dir(props) {
         props.OnClick();
     }
 
+    const filenameVendor = () => {
+        if (props.filename.length > 0) {
+            return (
+                <div class="filename-class">
+                    {props.filename}
+                </div>
+            )
+        }
+    }
+
     return (
         <div class="container">
         <div class="dir-class">
@@ -18,9 +28,10 @@ function Dir(props) {
             /> */}
             <FolderOutlined style={{ fontSize: '35px', color: "black" }} onClick={handleClick} />
         </div>
-        <div class="filename-class">
-            {props.filename}
-        </div>
+        { 
+            filenameVendor()
+        }
+        
         </div>
     );
 }

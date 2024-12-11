@@ -1,17 +1,19 @@
 import { useState } from 'react'
-import reactLogo from './assets/react.svg'
-import viteLogo from '/vite.svg'
 import './App.css'
-import List from './components/List/List'
+import GridList from './components/Grid/Grid'
 import { useEffect } from 'react'
 import { BaseUrl } from './constrant'
 import Back from './components/Back/back'
+import { Grid } from 'antd'
+import ListList from './components/List/List'
 
 function App() {
 
   const [data, setData] = useState(null)
   const [backPath, setBackPath] = useState(["/"])
   const [path, setPath] = useState("/")
+
+  const [isMobile, setIsMobile] = useState(false)
 
   const pushBackPath = (path) => {
     setBackPath((prevStack) => [...prevStack, path])
@@ -20,6 +22,20 @@ function App() {
   const popBackPath = () => {
     setBackPath((prevStack) => prevStack.slice(0, -1))
   }
+
+
+  useEffect(() => {
+    const handleResize = () => {
+      setIsMobile(window.innerWidth <= 768);
+    };
+
+    handleResize(); // 初始化判断
+    window.addEventListener("resize", handleResize); // 监听窗口大小变化
+
+    return () => {
+        window.removeEventListener("resize", handleResize); // 清理监听器
+    };
+  }, [])
 
   useEffect(() => {
     async function fetchData() {
@@ -63,7 +79,13 @@ function App() {
     <>
       <Back OnClick={back} />
       <div style={{ fontSize: '20px'}}>{path}</div>
-      <List listdata={data} onUpdate={updatePath} />
+
+      {
+        isMobile ? 
+        <ListList listdata={data} onUpdate={updatePath} /> :
+        <GridList listdata={data} onUpdate={updatePath} />
+      }
+
     </>
   )
 }
