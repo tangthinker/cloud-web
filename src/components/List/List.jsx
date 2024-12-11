@@ -8,9 +8,9 @@ import "./list.css";
 
 function ListList(props) {
 
-    const ImgageList = props.listdata?.filter((item) => item.Filename.endsWith(".jpg") || item.Filename.endsWith(".png"));
+    const ImgageList = props.listdata?.filter((item) => item.Filename.endsWith(".jpg") || item.Filename.endsWith(".png") || item.Filename.endsWith(".JPG"));
 
-    const FileList = props.listdata?.filter((item) => !item.Dir && !item.Filename.endsWith(".jpg") && !item.Filename.endsWith(".png"));
+    const FileList = props.listdata?.filter((item) => !item.Dir && !item.Filename.endsWith(".jpg") && !item.Filename.endsWith(".png") && !item.Filename.endsWith(".JPG"));
 
     const DirList = props.listdata?.filter((item) => item.Dir);
 

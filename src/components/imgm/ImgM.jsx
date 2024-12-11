@@ -24,13 +24,13 @@ function ImgM(props) {
         link.click();
     }
 
-    React.useEffect(() => {
+    const look = () => {
         fetch(props.src)
         .then((response) => response.json())
         .then((data) => {
             setFetchS(data.data);
         });
-    }, [])
+    }
 
     React.useEffect(() => {
         fetch(props.thuUrl)
@@ -77,6 +77,9 @@ function ImgM(props) {
                             ]
                         
                     },
+                    onVisibleChange: () => {
+                        look()
+                    }
                 }}
             />
         </div>
