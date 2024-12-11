@@ -29,11 +29,11 @@ function App() {
       setIsMobile(window.innerWidth <= 768);
     };
 
-    handleResize(); // 初始化判断
-    window.addEventListener("resize", handleResize); // 监听窗口大小变化
+    handleResize();
+    window.addEventListener("resize", handleResize); 
 
     return () => {
-        window.removeEventListener("resize", handleResize); // 清理监听器
+        window.removeEventListener("resize", handleResize); 
     };
   }, [])
 
