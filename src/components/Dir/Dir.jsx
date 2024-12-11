@@ -16,7 +16,7 @@ function Dir(props) {
                 onClick={handleClick}
             />
         </div>
-        <div>
+        <div class="filename-class">
             {props.filename}
         </div>
         </div>

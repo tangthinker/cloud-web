@@ -1,6 +1,6 @@
 .back-container {
-    width: 100px; /* 宽度 */
-    height: 100px; /* 高度 */
+    width: 90px; /* 宽度 */
+    height: 90px; /* 高度 */
     background-color: white; /* 初始背景颜色 */
     border-radius: 50%; /* 圆形 */
     display: flex; /* 使用 Flexbox 居中内容 */

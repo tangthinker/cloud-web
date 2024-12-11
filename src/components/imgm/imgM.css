@@ -7,10 +7,10 @@
 }
 
 .img-with-shadow {
-    width: 255px; /* 容器宽度 */
-    height: 155px; /* 容器高度 */
+    width: 225px; /* 容器宽度 */
+    height: 125px; /* 容器高度 */
     box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2); /* 阴影 */
-    border-radius: 15px; /* 圆角半径 */
+    border-radius: 12px; /* 圆角半径 */
     background-color: transparent; /* 背景透明 */
     display: flex; /* 使用 Flexbox */
     justify-content: center; /* 水平居中 */

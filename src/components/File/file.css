@@ -4,11 +4,11 @@
     flex-direction: column; /* 垂直方向排列 */
     align-items: center; /* 水平居中 */
     gap: 20px; /* 设置间距 */
+    margin: 10px;
 }
 
 .file-class {
     width: 305px; /* 容器宽度 */
-    height: 205px; /* 容器高度 */
     /* box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2); */
     /* border-radius: 15px;  */
     background-color: transparent; /* 背景透明 */
@@ -16,4 +16,19 @@
     justify-content: center; /* 水平居中 */
     align-items: center; /* 垂直居中 */
     overflow: hidden; /* 防止图片溢出 */
+}
+
+.filename-class {
+    width: 150px;              /* 容器宽度 */
+    white-space: nowrap;       /* 禁止换行 */
+    overflow: hidden;          /* 超出隐藏 */
+    text-overflow: ellipsis;   /* 显示省略号 */
+}
+
+.filename-class:hover {
+    white-space: normal;       /* 悬停时允许换行 */
+    overflow: visible;         /* 显示完整文本 */
+    width: 150px;
+    word-wrap: break-word;      /* 长单词自动换行 */
+    word-break: break-word;     /* 强制长单词换行，兼容更好 */
 }

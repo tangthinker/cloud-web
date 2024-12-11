@@ -8,30 +8,45 @@ import { BaseUrl } from "../../constrant";
 function List(props) {
     const [curCol, setCurCol] = React.useState(0);
 
+    const ImgageList = props.listdata?.filter((item) => item.Filename.endsWith(".jpg") || item.Filename.endsWith(".png"));
+
+    const FileList = props.listdata?.filter((item) => !item.Dir && !item.Filename.endsWith(".jpg") && !item.Filename.endsWith(".png"));
+
+    const DirList = props.listdata?.filter((item) => item.Dir);
+
     return (
         <div>
         <Row gutter={[24, 24]}>
-            {props.listdata?.map((item, index) => {
-                if (!item.Dir) {
-                    if (item.Filename.endsWith(".jpg") || item.Filename.endsWith(".png")) {
-                        return (
-                            <Col span={4}>
-                                <ImgM src={BaseUrl + "/api/v1/storage/download?filepath=" + item.Path} filename={item.Filename}  />
-                            </Col>
-                        );
-                    }
-                    return (
-                        <Col span={4}>
-                            <File filename={item.Filename} filepath={item.Path} />
-                        </Col>
-                    );
-                } else {
-                    return (
-                        <Col span={4}>
-                            <Dir filename={item.Filename} OnClick={() => props.onUpdate(item.Path)}/>
-                        </Col>
-                    );
-                } 
+            {DirList?.map((item, index) => {
+                return (
+                    <Col span={3}>
+                        <Dir filename={item.Filename} OnClick={() => props.onUpdate(item.Path)}/>
+                    </Col>
+                );
+            })}
+
+           
+        </Row>
+
+        <Row gutter={[24, 24]}>
+            {FileList?.map((item, index) => {
+                return (
+                    <Col span={3}>
+                        <File filename={item.Filename} filepath={item.Path} 
+                            filesize={item.Size} filetimestamp={item.Timestamp}
+                        />
+                    </Col>
+                );
+            })}
+        </Row>
+
+        <Row gutter={[10, 10]}>
+            {ImgageList?.map((item, index) => {
+                return (
+                    <Col span={4.3}>
+                        <ImgM src={BaseUrl + "/api/v1/storage/get?filepath=" + item.Path} filename={item.Filename}  thuUrl={BaseUrl + "/api/v1/storage/get-thumbnail?filepath=" + item.Path}/>
+                    </Col>
+                );
             })}
         </Row>
         </div>
@@ -39,3 +54,27 @@ function List(props) {
 }
 
 export default List;
+
+
+// {props.listdata?.map((item, index) => {
+//     if (!item.Dir) {
+//         if (item.Filename.endsWith(".jpg") || item.Filename.endsWith(".png")) {
+//             return (
+//                 <Col span={5}>
+//                     <ImgM src={BaseUrl + "/api/v1/storage/get?filepath=" + item.Path} filename={item.Filename}  thuUrl={BaseUrl + "/api/v1/storage/get-thumbnail?filepath=" + item.Path}/>
+//                 </Col>
+//             );
+//         }
+//         return (
+//             <Col span={3}>
+//                 <File filename={item.Filename} filepath={item.Path} />
+//             </Col>
+//         );
+//     } else {
+//         return (
+//             <Col span={3}>
+//                 <Dir filename={item.Filename} OnClick={() => props.onUpdate(item.Path)}/>
+//             </Col>
+//         );
+//     } 
+// })}
