@@ -6,7 +6,6 @@ import { Row, Col } from "antd";
 import { BaseUrl } from "../../constrant";
 
 function List(props) {
-    const [curCol, setCurCol] = React.useState(0);
 
     const ImgageList = props.listdata?.filter((item) => item.Filename.endsWith(".jpg") || item.Filename.endsWith(".png"));
 
@@ -19,7 +18,7 @@ function List(props) {
         <Row gutter={[30, 30]}>
             {DirList?.map((item, index) => {
                 return (
-                    <Col span={3}>
+                    <Col span={4}>
                         <Dir filename={item.Filename} OnClick={() => props.onUpdate(item.Path)}/>
                     </Col>
                 );
@@ -33,7 +32,7 @@ function List(props) {
         <Row gutter={[30, 30]}>
             {FileList?.map((item, index) => {
                 return (
-                    <Col span={3}>
+                    <Col span={4}>
                         <File filename={item.Filename} filepath={item.Path} 
                             filesize={item.Size} filetimestamp={item.Timestamp}
                         />

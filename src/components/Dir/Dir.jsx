@@ -16,7 +16,7 @@ function Dir(props) {
                 src={DirImg}
                 onClick={handleClick}
             /> */}
-            <FolderOutlined style={{ fontSize: '30px', color: "black" }} onClick={handleClick} />
+            <FolderOutlined style={{ fontSize: '35px', color: "black" }} onClick={handleClick} />
         </div>
         <div class="filename-class">
             {props.filename}

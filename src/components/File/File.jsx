@@ -65,7 +65,7 @@ function File(props) {
                     src={FileImg}
                     onClick={handleClick}
                 /> */}
-                <FileOutlined style={{ fontSize: '30px', color: "black" }} onClick={handleClick} />
+                <FileOutlined style={{ fontSize: '35px', color: "black" }} onClick={handleClick} />
 
             </div>
             <div class="filename-class">
