@@ -38,7 +38,7 @@ function ImgM(props) {
         .then((data) => {
             setFetchD(data.data);
         });
-    }, [])
+    }, [props.thuUrl])
 
     return (
         <div class="container">

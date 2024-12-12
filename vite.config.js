@@ -5,7 +5,7 @@ import react from '@vitejs/plugin-react'
 export default defineConfig({
   plugins: [react()],
   build: {
-    outDir: 'dist', // 打包输出目录
+    outDir: '/Users/tal/code/GoProject/cloud-core/public', // 打包输出目录
     assetsDir: 'assets', // 静态资源存放目录
     sourcemap: false, // 是否生成 source map
   }
