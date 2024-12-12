@@ -6,6 +6,7 @@ import { BaseUrl } from './constrant'
 import Back from './components/Back/back'
 import { Grid } from 'antd'
 import ListList from './components/List/List'
+import Upload from './components/Upload/upload'
 
 function App() {
 
@@ -37,24 +38,24 @@ function App() {
     };
   }, [])
 
-  useEffect(() => {
-    async function fetchData() {
-      const response = await fetch(BaseUrl + "/api/v1/storage/ls", {
-        method: "POST",
-        headers: {
-          "Content-Type": "application/json"
-        },
-        body: JSON.stringify({
-          "path": path
-        })
+  async function fetchData() {
+    const response = await fetch(BaseUrl + "/api/v1/storage/ls", {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json"
+      },
+      body: JSON.stringify({
+        "path": path
       })
+    })
 
-      const data = await response.json()
+    const data = await response.json()
 
-      setData(data.data)
-    
-    }
+    setData(data.data)
+  
+  }
 
+  useEffect(() => {
     fetchData()
   },[path])
   
@@ -79,6 +80,7 @@ function App() {
     <>
       <Back OnClick={back} />
       <div style={{ fontSize: '20px'}}>{path}</div>
+      <Upload path={path} onSuccess={fetchData} url={BaseUrl + "/api/v1/storage/upload"} />
 
       {
         isMobile ? 

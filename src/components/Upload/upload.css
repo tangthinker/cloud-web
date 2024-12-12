@@ -1,0 +1,16 @@
+
+.upload-container {
+    width: 50px; /* 宽度 */
+    height: 50px; /* 高度 */
+    background-color: white; /* 初始背景颜色 */
+    border-radius: 50%; /* 圆形 */
+    display: flex; /* 使用 Flexbox 居中内容 */
+    margin: auto;
+    justify-content: center; /* 水平居中 */
+    align-items: center; /* 垂直居中 */
+    transition: background-color 0.3s ease; /* 平滑过渡效果 */
+}
+
+.upload-container:hover {
+    background-color: #f0f0f0; /* 鼠标悬停时背景颜色 */
+}
