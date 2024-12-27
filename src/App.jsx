@@ -7,6 +7,20 @@ import Back from './components/Back/back'
 import { Grid } from 'antd'
 import ListList from './components/List/List'
 import Upload from './components/Upload/upload'
+import { invoke } from "@tauri-apps/api/core";
+
+
+async function testUrl(url) {
+  try {
+    const response = await invoke("test_url", {url : url})
+    console.log(response)
+    return response
+  } catch (error) {
+    console.error(error)
+    return false
+  }
+}
+
 
 function App() {
 
