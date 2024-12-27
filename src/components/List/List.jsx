@@ -3,7 +3,7 @@ import File from "../File/File";
 import Dir from "../Dir/Dir";
 import ImgM from "../imgm/ImgM";
 import { List, Space } from "antd";
-import { BaseUrl } from "../../constrant";
+import { BaseUrl, ImgLoadingUrl } from "../../constrant";
 import "./list.css";
 
 function ListList(props) {
@@ -38,7 +38,7 @@ function ListList(props) {
             {ImgageList?.map((item, index) => {
                 return (
                     <List.Item>
-                        <ImgM src={BaseUrl + "/api/v1/storage/get?filepath=" + item.Path} filename={""}  thuUrl={BaseUrl + "/api/v1/storage/get-thumbnail?filepath=" + item.Path}/> 
+                        <ImgM src={ImgLoadingUrl + "/api/v1/storage/get?filepath=" + item.Path} filename={""}  thuUrl={BaseUrl + "/api/v1/storage/get-thumbnail?filepath=" + item.Path}/> 
                         <div class="list-filename-class">{item.Filename}</div>
                     </List.Item>
                 );

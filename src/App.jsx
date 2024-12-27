@@ -2,7 +2,7 @@ import { useState } from 'react'
 import './App.css'
 import GridList from './components/Grid/Grid'
 import { useEffect } from 'react'
-import { BaseUrl } from './constrant'
+import { BaseUrl, setImgLoadingUrl } from './constrant'
 import Back from './components/Back/back'
 import { Grid } from 'antd'
 import ListList from './components/List/List'
@@ -21,8 +21,23 @@ async function testUrl(url) {
   }
 }
 
+function selectImgLodingUrl() {
+  const netUrl = "http://192.168.31.82:9999"
+
+  let res = testUrl(netUrl + "/ping")
+  if (res) {
+    setImgLoadingUrl(netUrl)
+    console.log("set img loading url to " + netUrl)
+    return
+  }
+  
+}
+
+
 
 function App() {
+
+  selectImgLodingUrl()
 
   const [data, setData] = useState(null)
   const [backPath, setBackPath] = useState(["/"])
