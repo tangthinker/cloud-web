@@ -9,6 +9,19 @@ import { DownloadOutlined,
     ZoomInOutlined,
     ZoomOutOutlined, 
 } from "@ant-design/icons";
+import { invoke } from "@tauri-apps/api/core";
+
+async function fetchImage(url) {
+    try {
+        const response = await invoke("get_img_data", {
+            url: url,
+        });
+        console.log(response);
+        return response;
+    } catch (error) {
+        console.error(error);
+    }
+}
 
 
 function ImgM(props) {
@@ -25,10 +38,13 @@ function ImgM(props) {
     }
 
     const look = () => {
-        fetch(props.src)
-        .then((response) => response.json())
-        .then((data) => {
-            setFetchS(data.data);
+        // fetch(props.src)
+        // .then((response) => response.json())
+        // .then((data) => {
+        //     setFetchS(data.data);
+        // });
+        fetchImage(props.src).then((data) => {
+            setFetchS(data);
         });
     }
 
