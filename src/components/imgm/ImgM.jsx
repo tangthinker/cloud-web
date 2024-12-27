@@ -68,9 +68,6 @@ function ImgM(props) {
                         {
                           transform: { scale },
                           actions: {
-                            onFlipY,
-                            onFlipX,
-                            onRotateLeft,
                             onRotateRight,
                             onZoomOut,
                             onZoomIn,
@@ -82,9 +79,6 @@ function ImgM(props) {
                             return [
                             <Space size={12} className="toolbar-wrapper">
                                 <DownloadOutlined onClick={handleDownload} />
-                                <SwapOutlined rotate={90} onClick={onFlipY} />
-                                <SwapOutlined onClick={onFlipX} />
-                                <RotateLeftOutlined onClick={onRotateLeft} />
                                 <RotateRightOutlined onClick={onRotateRight} />
                                 <ZoomOutOutlined disabled={scale === 1} onClick={onZoomOut} />
                                 <ZoomInOutlined disabled={scale === 50} onClick={onZoomIn} />
